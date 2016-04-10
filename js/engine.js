@@ -80,7 +80,21 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
+    }
+
+    function checkCollisions() {
+      allEnemies.forEach(function(enemy) {
+        //only checking for sideways collision, since sprites are odly shaped
+        //using a 17px offset on player, to insure only "real" collisions
+        if (enemy.x < player.x + 101 &&
+            enemy.x + 171 > player.x &&
+            enemy.y < player.y + 171 &&
+            101 + enemy.y > player.y) {
+              console.log('COLLISION');
+              // collision detected!
+        }
+      });
     }
 
     /* This is called by the update function and loops through all of the
