@@ -37,16 +37,21 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(){
-  this.x = 202;
-  this.y = 400;
-
+  //refactored to reuse reset function to set initial values
+  this.reset();
   //added row to simplify collisions
-  this.row = 5;
   this.sprite = 'images/char-boy.png';
 };
 
 Player.prototype.update = function() {
 
+};
+
+Player.prototype.reset = function() {
+  //reuseable reset function to place the player in bottom row
+  this.x = 202;
+  this.y = 400;
+  this.row = 5;
 };
 
 Player.prototype.handleInput = function(input) {
@@ -75,12 +80,8 @@ Player.prototype.handleInput = function(input) {
         this.y += yMovementSize;
         this.row += 1;
       }
-
         break;
       };
-
-    //console.log(this.x);
-    //console.log(this.y);
 };
 
 Player.prototype.render = function() {

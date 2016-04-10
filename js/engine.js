@@ -81,6 +81,15 @@ var Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         checkCollisions();
+        checkWinCondition();
+    }
+
+    function checkWinCondition() {
+      if (player.row == 0) {
+        //player is on top row and game is won
+        console.log('#WINNING');
+        player.reset();
+      }
     }
 
     function checkCollisions() {
@@ -96,9 +105,10 @@ var Engine = (function(global) {
             //enemy.y < player.y + 171 &&
             //101 + enemy.y > player.y
           ) {
-              console.log('COLLISION');
               // collision detected!
-        }
+              console.log('COLLISION');
+              player.reset();
+            }
       });
     }
 
