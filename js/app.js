@@ -3,8 +3,9 @@ var Enemy = function(row, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = -100;
-    this.y =  60 + row * 81;
+    this.y =  60 + (row -1) * 81;
     this.speed = speed;
+    this.row = row;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -91,9 +92,9 @@ Player.prototype.render = function() {
 
 var allEnemies = [];
 
-var enemy = new Enemy(0,60);
-var enemy2 = new Enemy(1,120);
-var enemy3 = new Enemy(2,80);
+var enemy = new Enemy(1,60);
+var enemy2 = new Enemy(2,120);
+var enemy3 = new Enemy(3,80);
 allEnemies.push(enemy);
 allEnemies.push(enemy2);
 allEnemies.push(enemy3);
